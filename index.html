@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;">
+    <meta property="og:title" content="Elegant Dining | Fine Cuisine Restaurant">
+    <meta property="og:description" content="Experience culinary excellence in every bite.">
+    <meta property="og:image" content="static/images/og-image.jpg">
+    <meta property="og:url" content="https://www.elegantdining.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="description" content="Describe your restaurant, emphasizing its unique offerings.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Dining | Fine Cuisine Restaurant</title>
+    <meta name="keywords" content="fine dining, gourmet restaurant, culinary excellence, reservations">
+    <link rel="stylesheet" type='text/css' href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/animations.css">
+    <link rel="icon" href="static/images/favicon.ico" type="images/favicon">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-brand">
+            <a href="{% url 'home' %}">Elegant Dining</a>
+        </div>
+        <button class="mobile-menu-btn" >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="navigation">
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'menu' %}">Menu</a></li>
+                <li><a href="{% url 'reservations' %}">Reservations</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Elegant Dining</h1>
+            <p>Experience culinary excellence in every bite</p>
+            <a href="{% url 'reservations' %}" class="cta-button">Book a Table</a>
+        </div>
+    </header>
+
+    <!-- Featured Section -->
+    <section class="featured">
+        <h2>Our Signature Dishes</h2>
+        <div class="featured-dishes">
+            {% for dish in featured_dishes %}
+            <div class="dish-card">
+                <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
+                <h3>{{ dish.name }}</h3>
+                <p>{{ dish.description }}</p>
+                <span class="price">${{ dish.price }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-content">
+            <h2>Our Story</h2>
+            <p>Founded in 1995, Elegant Dining has been serving exceptional cuisine for over two decades...</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="number">25+</span>
+                    <span class="label">Years of Excellence</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">50+</span>
+                    <span class="label">Award-Winning Dishes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="number">100K+</span>
+                    <span class="label">Happy Customers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Preview Section -->
+    <section class="menu-preview">
+        <h2>Explore Our Menu</h2>
+        <div class="menu-categories">
+            {% for category in menu_categories %}
+            <div class="category-card">
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                <h3>{{ category.name }}</h3>
+                <p>{{ category.description }}</p>
+                <a href="{% url 'menu' %}#{{ category.slug }}" class="view-more">View Menu</a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="chefs-special">
+        <h2>Chef's Specials</h2>
+        <div class="specials-container">
+            {% for special in chefs_specials %}
+            <div class="special-card">
+                <img src="{{ special.image.url }}" alt="{{ special.name }}">
+                <h3>{{ special.name }}</h3>
+                <p>{{ special.description }}</p>
+                <span class="price">${{ special.price }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    
+    <!-- Reservation Section -->
+    <section class="reservation">
+        <h2>Make a Reservation</h2>
+        <form action="{% url 'make_reservation' %}" method="POST" class="reservation-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+                <input type="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <input type="time" name="time" required>
+            </div>
+            <div class="form-group">
+                <select name="guests" required>
+                    <option value="">Number of Guests</option>
+                    <option value="1">1 Person</option>
+                    <option value="2">2 People</option>
+                    <option value="3">3 People</option>
+                    <option value="4">4 People</option>
+                    <option value="5">5+ People</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <textarea name="special_requests"  placeholder="Special Requests"></textarea>
+            </div>
+            <div class="button">
+                <button type="submit" class="submit-btn">Book Now</button>
+            </div>
+        </form>
+    </section>
+    <section class="events">
+        <h2>Upcoming Events & Promotions</h2>
+        <div class="events-container">
+            {% for event in events %}
+            <div class="event-card">
+                <h3>{{ event.title }}</h3>
+                <p>{{ event.description }}</p>
+                <span>{{ event.date|date:"F d, Y" }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    
+    <section class="reviews">
+        <h2>What Our Customers Say</h2>
+        <div class="reviews-container">
+            {% for review in customer_reviews %}
+            <div class="review-card">
+                <p>"{{ review.content }}"</p>
+                <span>- {{ review.author }}</span>
+                <div class="rating">
+                    {% for _ in range(review.rating) %}
+                    <i class="fas fa-star"></i>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="feedback">
+        <h2>We Value Your Feedback</h2>
+        <form action="{% url 'submit_feedback' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea id='white' name="feedback" placeholder="Share your experience with us" required></textarea>
+            </div>
+            <div class="button">
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </div>
+        </form>
+    </section>
+    
+    <section class="gallery">
+        <h2>Photo Gallery</h2>
+        <div class="gallery-container">
+            {% for photo in gallery_photos %}
+            <img src="{{ photo.image.url }}" alt="{{ photo.description }}" loading="lazy">
+            {% endfor %}
+        </div>
+    </section>
+    
+    <section class="team">
+        <h2>Meet Our Team</h2>
+        <div class="team-container">
+            {% for member in team_members %}
+            <div class="team-card">
+                <img src="{{ member.photo.url }}" alt="{{ member.name }}">
+                <h3>{{ member.name }}</h3>
+                <p>{{ member.role }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="faqs">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            {% for faq in faqs %}
+            <div class="faq-item">
+                <h3>{{ faq.question }}</h3>
+                <p>{{ faq.answer }}</p>
+            </div>
+            <div class="faq-item">
+                <h3>{{ faq.question }}</h3>
+                <p>{{ faq.answer }}</p>
+            </div>
+            <div class="faq-item">
+                <h3>{{ faq.question }}</h3>
+                <p>{{ faq.answer }}</p>
+            </div>
+            <div class="faq-item">
+                <h3>{{ faq.question }}</h3>
+                <p>{{ faq.answer }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    
+    
+    <!-- Contact Section -->
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>123 Gourmet Street, Culinary City, CC 12345</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <p>(555) 123-4567</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <p>info@elegantdining.com</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <p>Mon-Sun: 11:00 AM - 10:00 PM</p>
+            </div>
+        </div>
+    </section>
+    <div class="map">
+       <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317719.57412553305!2d-0.4305341977096211!3d51.52818174762628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon!5e0!3m2!1sde!2suk!4v1734966416463!5m2!1sde!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+       <iframe src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU&amp;center=-33.9%2C151.2&amp;zoom=12" frameborder="0" class="frame-p" allowfullscreen></iframe>
+    </div> 
+    
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Opening Hours</h3>
+                <ul>
+                    <li>Dinner: Tuesday - Sunday, 5:30 PM - 10:00 PM</li>
+                    <li>Lunch: Friday - Sunday, 12:00 PM - 2:30 PM</li>
+                    <li>Bar: Opens at 4:30 PM</li>
+                    <li>Closed Mondays</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Elegant Dining</h3>
+                <p>Experience the finest in culinary excellence</p>
+                <div class="social-links">
+                    <a href="https://facebook.com">Facebook<i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com">Instagram<i class="fab fa-instagram"></i></a>
+                    <a href="https://x.com">Twitter/X<i class="fab fa-twitter"></i></a>
+                    <a href="https://www.yelp.co.uk/london">Yelp<i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <div class="quicklinks">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="{% url 'menu' %}">Menu</a></li>
+                        <li><a href="{% url 'reservations' %}">Reservations</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-section newsletter" >
+                <h3>Newsletter</h3>
+                <form action="{% url 'newsletter_signup' %}" method="POST" class="newsletter-form">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Elegant Dining. All rights reserved.</p>
+    </div>
+    
+    <!-- Scripts -->
+     <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXX-Y');
+    </script>
+    <script src="static/js/main.js"></script>
+    <script src="static/js/animations.js"></script>
+</body>
+</html>
