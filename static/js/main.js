@@ -2,10 +2,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navigation = document.querySelector('.navigation');
+    const navbar = document.querySelector('.main-nav');
     
     mobileMenuBtn.addEventListener('click', function() {
         this.classList.toggle('active');
         navigation.classList.toggle('active');
+        navbar.style.transform = translateY(0);
     });
 
     // Close mobile menu when clicking a link
@@ -126,16 +128,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Dynamic navbar background
     let lastScroll = 0;
-    const navbar = document.querySelector('.main-nav');
 
     window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+        const currentScroll = window.scrollY;
         
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
+        // if (currentScroll > lastScroll && currentScroll > 100) {
+        //     navbar.style.transform = 'translateY(-100%)';
+        // } else {
+        //     navbar.style.transform = 'translateY(0)';
+        // }
         
         if (currentScroll > 50) {
             navbar.style.background = 'rgba(255, 255, 255, 0.95)';

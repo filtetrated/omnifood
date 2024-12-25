@@ -7,6 +7,7 @@
     --font-primary: 'Gabarito', serif;
     --font-secondary: 'Garamond', serif;
   }
+  
 body {
 font-family: var(--font-primary);
 line-height: 1.6;
@@ -14,6 +15,10 @@ color: var(--color-dark);
 background-color: var(--color-cream);
 width:100%;
 }
+body.no-scroll {
+  overflow: hidden;
+}
+
 
 .main-nav {
   background-color: transparent;
@@ -50,11 +55,6 @@ width:100%;
 
 .nav-brand a:hover {
   transform: scale(1.05);
-}
-
-.navigation {
-  display: flex;
-  align-items: center;
 }
 
 .nav-links {
@@ -880,3 +880,9 @@ section {
   }
   
 }  
+
+.testingfield {
+  display: flex;
+  height: 200%;
+  width: 100%;
+}
