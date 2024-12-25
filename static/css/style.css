@@ -799,6 +799,7 @@ to {
 
 .navigation.active {
   right: 0;
+  z-index: 1;
 }
 
 .nav-links {
@@ -811,13 +812,15 @@ to {
   z-index: 1002;
 }
 .navigation.active .nav-links {
+  /* border: 10px solid red; */
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 100%;
+  top: 100px;
   left: 0;
   right: 0;
   background-color: var(--color-dark);
+  /* backdrop-filter: blur(12px); */
   padding: 2rem;
   color: var(--color-cream);
 }

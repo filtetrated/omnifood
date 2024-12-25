@@ -147,32 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         lastScroll = currentScroll;
     });
-    document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navigation = document.querySelector('.navigation');
-    
-    mobileMenuBtn.addEventListener('click', function() {
-        this.classList.toggle('active');
-        navigation.classList.toggle('active');
-    });
-
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenuBtn.classList.remove('active');
-            navigation.classList.remove('active');
-        });
-    });
-
-    // Change navbar background on scroll
-    window.addEventListener('scroll', function() {
-        const nav = document.querySelector('.main-nav');
-        if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    });
     // Add to cart animation
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(button => {
@@ -206,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 1000);
         });
     });
-});
 });
 // Add these CSS animations to your existing CSS file
 const additionalCSS = `
