@@ -7,7 +7,10 @@
     --font-primary: 'Gabarito', serif;
     --font-secondary: 'Garamond', serif;
   }
-  
+::selection {
+  background-color: var(--color-gold);
+  color:var(--color-dark);
+}
 body {
 font-family: var(--font-primary);
 line-height: 1.6;
@@ -21,6 +24,8 @@ body.no-scroll {
 
 
 .main-nav {
+  backdrop-filter: blur(15px);
+  color:var(--color-cream);
   background-color: transparent;
   padding: 1.5rem 2rem;
   position: fixed;
@@ -37,10 +42,14 @@ body.no-scroll {
   background-color: var(--color-dark);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 1rem 2rem;
+  color:var(--color-dark);
+  /* border: 2px solid red; */
 }
 
 .nav-brand {
   z-index: 1001;
+  transition: transform 0.6s ease;
+
 }
 
 .nav-brand a {
@@ -53,7 +62,7 @@ body.no-scroll {
   transition: transform 0.3s ease;
 }
 
-.nav-brand a:hover {
+.nav-brand:hover {
   transform: scale(1.05);
 }
 
@@ -149,7 +158,7 @@ body.no-scroll {
 .hero {
 height: 100vh;
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-                  url('../images/hero-bg.jpg');
+                  url('../images/hero-bg.webp');
 background-size: cover;
 background-position: center;
 display: flex;
@@ -185,12 +194,6 @@ transition: all 0.3s ease;
 text-decoration: none;
 display: inline-block;
 }
-
-.cta-button:hover {
-background-color: var(--color-dark);
-color: var(--color-gold);
-}
-
 /* Featured Section */
 .featured {
 padding: 6rem 2rem;
@@ -326,6 +329,7 @@ color: var(--color-cream);
 padding: 8rem 2rem;
 background-color: var(--color-dark);
 color: var(--color-cream);
+font-size: 1.2rem;
 }
 
 .about-content {
@@ -737,7 +741,7 @@ outline-offset: 2px;
 
 /* Enhanced readability for hover state on buttons */
 .cta-button:hover {
-background: var(--primary-color);
+background: var(--color-gray);
 transform: translateY(-2px);
 color: var(--secondary-color);
 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);

@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Parallax effect for hero section
     window.addEventListener('scroll', () => {
         const hero = document.querySelector('.hero');
-        const scrolled = window.pageYOffset;
+        const scrolled = window.scrollY;
         hero.style.backgroundPositionY = `${scrolled * 0.5}px`;
     });
 
@@ -125,29 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     images.forEach(img => imageObserver.observe(img));
-
-    // Dynamic navbar background
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        
-        // if (currentScroll > lastScroll && currentScroll > 100) {
-        //     navbar.style.transform = 'translateY(-100%)';
-        // } else {
-        //     navbar.style.transform = 'translateY(0)';
-        // }
-        
-        if (currentScroll > 50) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-        } else {
-            navbar.style.background = 'transparent';
-            navbar.style.boxShadow = 'none';
-        }
-        
-        lastScroll = currentScroll;
-    });
     // Add to cart animation
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
     addToCartButtons.forEach(button => {
