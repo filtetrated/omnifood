@@ -59,7 +59,29 @@
         <div class="featured-dishes">
             {% for dish in featured_dishes %}
             <div class="dish-card">
-                <img src="{{ dish.image.url }}" alt="{{ dish.name }}">
+                <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
+                <img src="static/images/wellington.webp" alt="beef wellington">
+                <h3>{{ dish.name }}</h3>
+                <p>{{ dish.description }}</p>
+                <span class="price">${{ dish.price }}</span>
+            </div>
+            <div class="dish-card">
+                <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
+                <img src="static/images/lobster.webp" alt="lobster thermidor">
+                <h3>{{ dish.name }}</h3>
+                <p>{{ dish.description }}</p>
+                <span class="price">${{ dish.price }}</span>
+            </div>
+            <div class="dish-card">
+                <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
+                <img src="static/images/truffle.webp" alt="truffle risotto">
+                <h3>{{ dish.name }}</h3>
+                <p>{{ dish.description }}</p>
+                <span class="price">${{ dish.price }}</span>
+            </div>
+            <div class="dish-card">
+                <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
+                <img src="static/images/cheesy.webp" alt="board of cheeses">
                 <h3>{{ dish.name }}</h3>
                 <p>{{ dish.description }}</p>
                 <span class="price">${{ dish.price }}</span>
