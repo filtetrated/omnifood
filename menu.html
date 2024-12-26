@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu | Elegant Dining</title>
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/css/animations.css">
-    <link rel="stylesheet" href="../static/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/animations.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/menu.css">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
 
 </head>
@@ -23,29 +24,31 @@
             <span></span>
             <span></span>
         </button>
-        <ul class="nav-links">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="#" class="active">Menu</a></li>
-            <li><a href="../reservations.html">Reservations</a></li>
-            <li><a href="../about.html">About</a></li>
-            <li><a href="../contact.html">Contact</a></li>
-        </ul>
-    </nav>
-
-    <!-- Menu Header -->
-    <header class="menu-header">
-        <div class="menu-header-content">
-            <h1>Our Menu</h1>
-            <p>A culinary journey through flavors and traditions</p>
+        <div class="navigation">
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="#" class="active">Menu</a></li>
+                <li><a href="../reservations.html">Reservations</a></li>
+                <li><a href="../about.html">About</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
         </div>
+    </nav>
+    <!-- Menu Header -->
+    <header class="hero">
+        <header class="menu-header">
+            <div class="menu-header-content">
+                <h1>Our Menu</h1>
+                <p>A culinary journey through flavors and traditions</p>
+            </div>
+        </header>
     </header>
-
     <!-- Menu Navigation -->
     <div class="menu-navigation">
         <ul>
             <li><a href="#appetizers">Appetizers</a></li>
-            <li><a href="#soups">Soups & Salads</a></li>
-            <li><a href="#mains">Main Courses</a></li>
+            <li><a href="#soups_salads">Soups & Salads</a></li>
+            <li><a href="#main_courses">Main Courses</a></li>
             <li><a href="#seafood">Seafood</a></li>
             <li><a href="#vegetarian">Vegetarian</a></li>
             <li><a href="#desserts">Desserts</a></li>
@@ -104,7 +107,7 @@
                 <!-- Menu items... -->
             </div>
          </section>
-         <section id="vegetarian">
+         <section id="vegetarian" class="menu-section">
             <h2>Vegetarian</h2>
             <p class="section-description">Carefully selected premium ingredients prepared to perfection</p>
             
@@ -112,8 +115,16 @@
                 <!-- Menu items... -->
             </div>
          </section>
-         <section id="desserts">
+         <section id="desserts"class="menu-section">
             <h2>Desserts</h2>
+            <p class="section-description">Carefully selected premium ingredients prepared to perfection</p>
+            
+            <div class="menu-items">
+                <!-- Menu items... -->
+            </div>
+         </section>
+         <section id="beverages"class="menu-section">
+            <h2>Beverages</h2>
             <p class="section-description">Carefully selected premium ingredients prepared to perfection</p>
             
             <div class="menu-items">
@@ -136,7 +147,7 @@
                 <span>Vegan</span>
             </div>
             <div class="dietary-item">
-                <i class="fi fi-rs-wheat-awn-circle-exclamation"></i>
+                <i class="fas fa-wheat-awn"></i> <!-- For Font Awesome -->
                 <span>Gluten-Free</span>
             </div>
             <div class="dietary-item">

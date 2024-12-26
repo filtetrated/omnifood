@@ -194,7 +194,34 @@ const menuData = {
             allergens: ["Dairy"],
             image: "cheese.jpg"
         }
+    ],
+    beverages: [
+        {
+            name: "Champagne",
+            price: 150,
+            description: "Dom Pérignon Vintage 2012, served chilled.",
+            tags: ["Premium", "Alcoholic"],
+            allergens: [],
+            image: "champagne.jpg"
+        },
+        {
+            name: "Old Fashioned",
+            price: 22,
+            description: "Classic bourbon cocktail, orange peel, bitters.",
+            tags: ["Classic", "Alcoholic"],
+            allergens: [],
+            image: "old-fashioned.jpg"
+        },
+        {
+            name: "Freshly Squeezed Orange Juice",
+            price: 12,
+            description: "100% organic oranges, no added sugar.",
+            tags: ["Non-Alcoholic", "Vegan"],
+            allergens: [],
+            image: "orange-juice.jpg"
+        }
     ]
+    
 };
 
 // Export the menu data
