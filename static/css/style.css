@@ -214,6 +214,9 @@ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 gap: 2rem;
 padding: 0 2rem;
 }
+.price {
+  font-size: 1rem;
+}
 
 .dish-card {
 background-color: white;
@@ -732,6 +735,8 @@ display:block;
 bottom: 0px;
 background-color: var(--color-dark);
 color: var(--color-cream);
+font-size: 1rem;
+text-align: center;
 }
 /* Improved focus state for accessibility */
 .nav-links a:focus {

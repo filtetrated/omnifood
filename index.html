@@ -16,11 +16,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elegant Dining | Fine Cuisine Restaurant</title>
     <meta name="keywords" content="fine dining, gourmet restaurant, culinary excellence, reservations">
     <link rel="stylesheet" type='text/css' href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/animations.css">
+    <link rel="stylesheet" type="text/css" href="static/css/animations.css">
     <link rel="icon" href="static/images/favicon.ico" type="images/favicon">
+    <title>Elegant Dining | Fine Cuisine Restaurant</title>
 </head>
 <body>
     <!-- Navigation -->
@@ -57,36 +57,50 @@
     <section class="featured">
         <h2>Our Signature Dishes</h2>
         <div class="featured-dishes">
-            {% for dish in featured_dishes %}
+            <!-- {% for dish in featured_dishes %} -->
             <div class="dish-card">
                 <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
+                <!-- <h3>{{ dish.name }}</h3>
+                <p>{{ dish.description }}</p>
+                <span class="price">${{ dish.price }}</span> -->
                 <img src="static/images/wellington.webp" alt="beef wellington">
-                <h3>{{ dish.name }}</h3>
-                <p>{{ dish.description }}</p>
-                <span class="price">${{ dish.price }}</span>
+                <h3>Beef Wellington</h3>
+                <p>Our signature dish features premium beef tenderloin wrapped in mushroom duxelles, prosciutto, and golden puff pastry. Served with roasted root vegetables and red wine reduction.</p>
+                <span class="price">$67</span>
             </div>
             <div class="dish-card">
                 <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
+                <!-- <img src="static/images/lobster.webp" alt="lobster thermidor">
+                <h3>{{ dish.name }}</h3>
+                <p>{{ dish.description }}</p>
+                <span class="price">${{ dish.price }}</span> -->
                 <img src="static/images/lobster.webp" alt="lobster thermidor">
-                <h3>{{ dish.name }}</h3>
-                <p>{{ dish.description }}</p>
-                <span class="price">${{ dish.price }}</span>
+                <h3>Maine Lobster Thermidor</h3>
+                <p>Fresh Maine lobster prepared in the classical French style, with a rich brandy-infused sauce, topped with Gruyère cheese and gratinated to perfection.</p>
+                <span class="price">$59</span>
             </div>
             <div class="dish-card">
                 <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
+                <!-- <h3>{{ dish.name }}</h3>
+                <p>{{ dish.description }}</p>
+                <span class="price">${{ dish.price }}</span> -->
                 <img src="static/images/truffle.webp" alt="truffle risotto">
-                <h3>{{ dish.name }}</h3>
-                <p>{{ dish.description }}</p>
-                <span class="price">${{ dish.price }}</span>
+                <h3> Seasonal Truffle Risotto</h3>
+                <p>Carnaroli rice slowly cooked with wild mushrooms and finished with seasonal truffles and aged Parmigiano-Reggiano. A celebration of texture and umami.</p>
+                <span class="price">$63</span>
             </div>
             <div class="dish-card">
                 <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
-                <img src="static/images/cheesy.webp" alt="board of cheeses">
-                <h3>{{ dish.name }}</h3>
+                <!-- <img src="static/images/cheesy.webp" alt="board of cheeses">
+                <h3></h3>
                 <p>{{ dish.description }}</p>
-                <span class="price">${{ dish.price }}</span>
+                <span class="price">${{ dish.price }}</span> -->
+                <img src="static/images/cheesy.webp" alt="board of cheeses">
+                <h3>Board of Cheeses</h3>
+                <p>An artful selection of artisanal cheeses from around the world, paired with seasonal fruits, honeycomb, and freshly baked crackers. A harmonious blend of creamy, tangy, and nutty flavors, perfect for sharing or indulging solo.</p>
+                <span class="price">$89</span>
             </div>
-            {% endfor %}
+            <!-- {% endfor %} -->
         </div>
     </section>
 
@@ -117,15 +131,80 @@
     <!-- Menu Preview Section -->
     <section class="menu-preview">
         <h2>Explore Our Menu</h2>
+        <h2> Starters</h2> 
         <div class="menu-categories">
-            {% for category in menu_categories %}
-            <div class="category-card">
+            <!-- {% for category in menu_categories %} -->
+            <!-- <div class="category-card">
                 <img src="{{ category.image.url }}" alt="{{ category.name }}">
                 <h3>{{ category.name }}</h3>
                 <p>{{ category.description }}</p>
                 <a href="{% url 'menu' %}#{{ category.slug }}" class="view-more">View Menu</a>
+            </div> -->
+            <div class="category-card">
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                <h3>Pan-Seared Scallops</h3>
+                <p>Perfectly seared sea scallops with cauliflower purée, crispy pancetta, and herb oil
+                    Wine Pairing: Chablis Premier Cru</p>
+                <a href="/menu.html" class="view-more">View Menu</a>
             </div>
-            {% endfor %}
+            <div class="category-card">
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                <h3>Wild Mushroom Risotto</h3>
+                <p>Arborio rice with wild mushrooms, aged Parmesan, and white truffle oil
+                    Wine Pairing: Pinot Noir</p>
+                    <a href="/menu.html" class="view-more">View Menu</a>
+                </div>
+            <div class="category-card">
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                <h3>Artisanal Cheese Board</h3>
+                <p>Selection of artisanal cheeses, house-made preserves, honey, and artisanal bread
+                    Wine Pairing: Vintage Port</p>
+                    <a href="/menu.html" class="view-more">View Menu</a>
+                </div>
+            <!-- {% endfor %} -->
+        </div>
+        <h2>Main Courses</h2>
+        <div class="menu-categories">
+            <!-- {% for category in menu_categories %} -->
+            <div class="category-card">
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                <h3>Aged Prime Ribeye</h3>
+                <p>21-day aged ribeye with roasted bone marrow, wild mushrooms, and red wine reduction
+                    Wine Pairing: Cabernet Sauvignon</p>
+                    <a href="/menu.html" class="view-more">View Menu</a>
+                </div>
+            <div class="category-card">
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                <h3>Pan-Roasted Duck Breast</h3>
+                <p>Maple Leaf Farms duck breast, cherry gastrique, confit fingerling potatoes
+                    Wine Pairing: Pinot Noir</p>
+                    <a href="/menu.html" class="view-more">View Menu</a>
+                </div>
+            <div class="category-card">
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                <h3>Mediterranean Sea Bass</h3>
+                <p>Line-caught sea bass, saffron risotto, grilled asparagus, lemon beurre blanc
+                    Wine Pairing: Sancerre</p>
+                    <a href="/menu.html" class="view-more">View Menu</a>
+                </div>
+            <!-- {% endfor %} -->
+        </div>
+        <h2>Desserts </h2>
+        <div class="menu-categories">
+            <div class="category-card">
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                <h3>Dark Chocolate Soufflé</h3>
+                <p>Valrhona chocolate soufflé with vanilla bean ice cream (please allow 20 minutes)
+                    Wine Pairing: Ruby Port</p>
+                    <a href="/menu.html" class="view-more">View Menu</a>
+                </div>
+            <div class="category-card">
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                <h3>Crème Brûlée Trio</h3>
+                <p>Classic vanilla, lavender, and espresso crème brûlée
+                    Wine Pairing: Sauternes</p>
+                <a href="/menu.html" class="view-more">View Menu</a>
+            </div>
         </div>
     </section>
     <section class="chefs-special">
