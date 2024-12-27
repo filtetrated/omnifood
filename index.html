@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags remain the same -->
     <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
-    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience culinary excellence in every bite.">
     <meta property="og:title" content="Elegant Dining | Fine Cuisine Restaurant">
     <meta property="og:description" content="Experience culinary excellence in every bite.">
     <meta property="og:image" content="static/images/og-image.jpg">
     <meta property="og:url" content="https://www.elegantdining.com">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="description" content="Describe your restaurant, emphasizing its unique offerings.">
+    <meta name="keywords" content="fine dining, gourmet restaurant, culinary excellence, reservations">
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="fine dining, gourmet restaurant, culinary excellence, reservations">
+
+    <!-- Styles -->
     <link rel="stylesheet" type='text/css' href="static/css/style.css">
     <link rel="stylesheet" type="text/css" href="static/css/animations.css">
     <link rel="icon" href="static/images/favicon.ico" type="images/favicon">
+    
     <title>Elegant Dining | Fine Cuisine Restaurant</title>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation - Modified with data-url attributes -->
     <nav class="main-nav">
         <div class="nav-brand">
-            <a href="{% url 'home' %}">Elegant Dining</a>
+            <a href="/" data-url="home">Elegant Dining</a>
         </div>
-        <button class="mobile-menu-btn" >
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="mobile-menu-btn">
+            <span></span><span></span><span></span>
         </button>
         <div class="navigation">
             <ul class="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'menu' %}">Menu</a></li>
-                <li><a href="{% url 'reservations' %}">Reservations</a></li>
-                <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li><a href="../" data-url="home">Home</a></li>
+                <li><a href="../menu" data-url="menu">Menu</a></li>
+                <li><a href="../reservations" data-url="reservations">Reservations</a></li>
+                <li><a href="../about" data-url="about">About</a></li>
+                <li><a href="../contact" data-url="contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -49,68 +50,21 @@
         <div class="hero-content">
             <h1>Welcome to Elegant Dining</h1>
             <p>Experience culinary excellence in every bite</p>
-            <a href="{% url 'reservations' %}" class="cta-button">Book a Table</a>
+            <a href="/reservations" data-url="reservations" class="cta-button">Book a Table</a>
         </div>
     </header>
 
-    <!-- Featured Section -->
+    <!-- Featured Section - Simplified for JavaScript population -->
     <section class="featured">
         <h2>Our Signature Dishes</h2>
-        <div class="featured-dishes">
-            <!-- {% for dish in featured_dishes %} -->
-            <div class="dish-card">
-                <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
-                <!-- <h3>{{ dish.name }}</h3>
-                <p>{{ dish.description }}</p>
-                <span class="price">${{ dish.price }}</span> -->
-                <img src="static/images/wellington.webp" alt="beef wellington">
-                <h3>Beef Wellington</h3>
-                <p>Our signature dish features premium beef tenderloin wrapped in mushroom duxelles, prosciutto, and golden puff pastry. Served with roasted root vegetables and red wine reduction.</p>
-                <span class="price">$67</span>
-            </div>
-            <div class="dish-card">
-                <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
-                <!-- <img src="static/images/lobster.webp" alt="lobster thermidor">
-                <h3>{{ dish.name }}</h3>
-                <p>{{ dish.description }}</p>
-                <span class="price">${{ dish.price }}</span> -->
-                <img src="static/images/lobster.webp" alt="lobster thermidor">
-                <h3>Maine Lobster Thermidor</h3>
-                <p>Fresh Maine lobster prepared in the classical French style, with a rich brandy-infused sauce, topped with Gruyère cheese and gratinated to perfection.</p>
-                <span class="price">$59</span>
-            </div>
-            <div class="dish-card">
-                <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
-                <!-- <h3>{{ dish.name }}</h3>
-                <p>{{ dish.description }}</p>
-                <span class="price">${{ dish.price }}</span> -->
-                <img src="static/images/risotto.webp" alt="truffle risotto">
-                <h3> Seasonal Truffle Risotto</h3>
-                <p>Carnaroli rice slowly cooked with wild mushrooms and finished with seasonal truffles and aged Parmigiano-Reggiano. A celebration of texture and umami.</p>
-                <span class="price">$63</span>
-            </div>
-            <div class="dish-card">
-                <!-- <img src="{{ dish.image.url }}" alt="{{ dish.name }}"> -->
-                <!-- <img src="static/images/cheesy.webp" alt="board of cheeses">
-                <h3></h3>
-                <p>{{ dish.description }}</p>
-                <span class="price">${{ dish.price }}</span> -->
-                <img src="static/images/cheesy.webp" alt="board of cheeses">
-                <h3>Board of Cheeses</h3>
-                <p>An artful selection of artisanal cheeses from around the world, paired with seasonal fruits, honeycomb, and freshly baked crackers. A harmonious blend of creamy, tangy, and nutty flavors, perfect for sharing or indulging solo.</p>
-                <span class="price">$89</span>
-            </div>
-            <!-- {% endfor %} -->
-        </div>
+        <div class="featured-dishes" data-section="featured"></div>
     </section>
 
     <!-- About Section -->
     <section class="about">
         <div class="about-content">
             <h2>Our Story</h2>
-            <p>Our Story
-                Founded in 1995 by renowned chef Marcus Laurent, Elegant Dining has established itself as a beacon of culinary excellence in the heart of the city. Our philosophy combines traditional cooking techniques with modern innovation, creating an unforgettable dining experience that engages all the senses.
-                Our commitment to quality begins with carefully sourced ingredients from local farmers and artisanal producers. Each dish tells a story of dedication, creativity, and passion for the culinary arts. Under the guidance of Executive Chef Sofia Rodriguez, our kitchen continues to push boundaries while honoring classical traditions.</p>
+            <p>Founded in 1995 by renowned chef Marcus Laurent, Elegant Dining has established itself as a beacon of culinary excellence in the heart of the city. Our philosophy combines traditional cooking techniques with modern innovation, creating an unforgettable dining experience that engages all the senses.</p>
             <div class="stats">
                 <div class="stat-item">
                     <span class="number">25+</span>
@@ -131,101 +85,19 @@
     <!-- Menu Preview Section -->
     <section class="menu-preview">
         <h2>Explore Our Menu</h2>
-        <h2> Starters</h2> 
-        <div class="menu-categories">
-            <!-- {% for category in menu_categories %} -->
-            <!-- <div class="category-card">
-                <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                <h3>{{ category.name }}</h3>
-                <p>{{ category.description }}</p>
-                <a href="{% url 'menu' %}#{{ category.slug }}" class="view-more">View Menu</a>
-            </div> -->
-            <div class="category-card">
-                <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                <h3>Pan-Seared Scallops</h3>
-                <p>Perfectly seared sea scallops with cauliflower purée, crispy pancetta, and herb oil
-                    Wine Pairing: Chablis Premier Cru</p>
-                <a href="/menu.html" class="view-more">View Menu</a>
-            </div>
-            <div class="category-card">
-                <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                <h3>Wild Mushroom Risotto</h3>
-                <p>Arborio rice with wild mushrooms, aged Parmesan, and white truffle oil
-                    Wine Pairing: Pinot Noir</p>
-                    <a href="/menu.html" class="view-more">View Menu</a>
-                </div>
-            <div class="category-card">
-                <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                <h3>Artisanal Cheese Board</h3>
-                <p>Selection of artisanal cheeses, house-made preserves, honey, and artisanal bread
-                    Wine Pairing: Vintage Port</p>
-                    <a href="/menu.html" class="view-more">View Menu</a>
-                </div>
-            <!-- {% endfor %} -->
-        </div>
-        <h2>Main Courses</h2>
-        <div class="menu-categories">
-            <!-- {% for category in menu_categories %} -->
-            <div class="category-card">
-                <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                <h3>Aged Prime Ribeye</h3>
-                <p>21-day aged ribeye with roasted bone marrow, wild mushrooms, and red wine reduction
-                    Wine Pairing: Cabernet Sauvignon</p>
-                    <a href="/menu.html" class="view-more">View Menu</a>
-                </div>
-            <div class="category-card">
-                <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                <h3>Pan-Roasted Duck Breast</h3>
-                <p>Maple Leaf Farms duck breast, cherry gastrique, confit fingerling potatoes
-                    Wine Pairing: Pinot Noir</p>
-                    <a href="/menu.html" class="view-more">View Menu</a>
-                </div>
-            <div class="category-card">
-                <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                <h3>Mediterranean Sea Bass</h3>
-                <p>Line-caught sea bass, saffron risotto, grilled asparagus, lemon beurre blanc
-                    Wine Pairing: Sancerre</p>
-                    <a href="/menu.html" class="view-more">View Menu</a>
-                </div>
-            <!-- {% endfor %} -->
-        </div>
-        <h2>Desserts </h2>
-        <div class="menu-categories">
-            <div class="category-card">
-                <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                <h3>Dark Chocolate Soufflé</h3>
-                <p>Valrhona chocolate soufflé with vanilla bean ice cream (please allow 20 minutes)
-                    Wine Pairing: Ruby Port</p>
-                    <a href="/menu.html" class="view-more">View Menu</a>
-                </div>
-            <div class="category-card">
-                <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                <h3>Crème Brûlée Trio</h3>
-                <p>Classic vanilla, lavender, and espresso crème brûlée
-                    Wine Pairing: Sauternes</p>
-                <a href="/menu.html" class="view-more">View Menu</a>
-            </div>
-        </div>
+        <div class="menu-categories" data-section="menu-preview"></div>
     </section>
-    <section class="chefs-special">
-        <h2>Chef's Specials</h2>
-        <div class="specials-container">
-            {% for special in chefs_specials %}
-            <div class="special-card">
-                <img src="{{ special.image.url }}" alt="{{ special.name }}">
-                <h3>{{ special.name }}</h3>
-                <p>{{ special.description }}</p>
-                <span class="price">${{ special.price }}</span>
-            </div>
-            {% endfor %}
-        </div>
+
+    <!-- Events Section - Simplified -->
+    <section class="events">
+        <h2>Upcoming Events & Promotions</h2>
+        <div class="events-container" data-section="events"></div>
     </section>
-    
-    <!-- Reservation Section -->
+
+    <!-- Reservation Section - Modified form -->
     <section class="reservation">
         <h2>Make a Reservation</h2>
-        <form action="{% url 'make_reservation' %}" method="POST" class="reservation-form">
-            {% csrf_token %}
+        <form class="reservation-form" action="/api/reservations" method="POST">
             <div class="form-group">
                 <input type="text" name="name" placeholder="Your Name" required>
             </div>
@@ -249,101 +121,32 @@
                 </select>
             </div>
             <div class="form-group">
-                <textarea name="special_requests"  placeholder="Special Requests"></textarea>
+                <textarea name="special_requests" placeholder="Special Requests"></textarea>
             </div>
             <div class="button">
                 <button type="submit" class="submit-btn">Book Now</button>
             </div>
         </form>
     </section>
-    <section class="events">
-        <h2>Upcoming Events & Promotions</h2>
-        <div class="events-container">
-            {% for event in events %}
-            <div class="event-card">
-                <h3>{{ event.title }}</h3>
-                <p>{{ event.description }}</p>
-                <span>{{ event.date|date:"F d, Y" }}</span>
-            </div>
-            {% endfor %}
-        </div>
-    </section>
-    
+
+    <!-- Reviews Section - Simplified -->
     <section class="reviews">
         <h2>What Our Customers Say</h2>
-        <div class="reviews-container">
-            {% for review in customer_reviews %}
-            <div class="review-card">
-                <p>"{{ review.content }}"</p>
-                <span>- {{ review.author }}</span>
-                <div class="rating">
-                    {% for _ in range(review.rating) %}
-                    <i class="fas fa-star"></i>
-                    {% endfor %}
-                </div>
-            </div>
-            {% endfor %}
-        </div>
+        <div class="reviews-container" data-section="reviews"></div>
     </section>
-    <section class="feedback">
-        <h2>We Value Your Feedback</h2>
-        <form action="{% url 'submit_feedback' %}" method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <textarea id='white' name="feedback" placeholder="Share your experience with us" required></textarea>
-            </div>
-            <div class="button">
-                <button type="submit" class="submit-btn">Submit Feedback</button>
-            </div>
-        </form>
-    </section>
-    
-    <section class="gallery">
-        <h2>Photo Gallery</h2>
-        <div class="gallery-container">
-            {% for photo in gallery_photos %}
-            <img src="{{ photo.image.url }}" alt="{{ photo.description }}" loading="lazy">
-            {% endfor %}
-        </div>
-    </section>
-    
-    <section class="team">
+
+    <!-- Team Section - Simplified -->
+    <section class="team" id="team_members">
         <h2>Meet Our Team</h2>
-        <div class="team-container">
-            {% for member in team_members %}
-            <div class="team-card">
-                <img src="{{ member.photo.url }}" alt="{{ member.name }}">
-                <h3>{{ member.name }}</h3>
-                <p>{{ member.role }}</p>
-            </div>
-            {% endfor %}
-        </div>
+        <div class="team-container" data-section="team"></div>
     </section>
+
+    <!-- FAQs Section - Simplified -->
     <section class="faqs">
         <h2>Frequently Asked Questions</h2>
-        <div class="faq-container">
-            {% for faq in faqs %}
-            <div class="faq-item">
-                <h3>{{ faq.question }}</h3>
-                <p>{{ faq.answer }}</p>
-            </div>
-            <div class="faq-item">
-                <h3>{{ faq.question }}</h3>
-                <p>{{ faq.answer }}</p>
-            </div>
-            <div class="faq-item">
-                <h3>{{ faq.question }}</h3>
-                <p>{{ faq.answer }}</p>
-            </div>
-            <div class="faq-item">
-                <h3>{{ faq.question }}</h3>
-                <p>{{ faq.answer }}</p>
-            </div>
-            {% endfor %}
-        </div>
+        <div class="faq-container" data-section="faqs"></div>
     </section>
-    
-    
+
     <!-- Contact Section -->
     <section class="contact">
         <h2>Contact Us</h2>
@@ -366,11 +169,15 @@
             </div>
         </div>
     </section>
+
+    <!-- Map Section -->
     <div class="map">
-       <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317719.57412553305!2d-0.4305341977096211!3d51.52818174762628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon!5e0!3m2!1sde!2suk!4v1734966416463!5m2!1sde!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
-       <iframe src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU&amp;center=-33.9%2C151.2&amp;zoom=12" frameborder="0" class="frame-p" allowfullscreen></iframe>
-    </div> 
-    
+        <iframe src="https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=-33.9,151.2&zoom=12" 
+                frameborder="0" 
+                class="frame-p" 
+                allowfullscreen></iframe>
+    </div>
+
     <!-- Footer -->
     <footer class="main-footer">
         <div class="footer-content">
@@ -387,28 +194,16 @@
                 <h3>Elegant Dining</h3>
                 <p>Experience the finest in culinary excellence</p>
                 <div class="social-links">
-                    <a href="https://facebook.com">Facebook<i class="fab fa-facebook"></i></a>
-                    <a href="https://instagram.com">Instagram<i class="fab fa-instagram"></i></a>
-                    <a href="https://x.com">Twitter/X<i class="fab fa-twitter"></i></a>
-                    <a href="https://www.yelp.co.uk/london">Yelp<i class="fab fa-twitter"></i></a>
+                    <a href="https://facebook.com" target="_blank">Facebook</a>
+                    <a href="https://instagram.com" target="_blank">Instagram</a>
+                    <a href="https://x.com" target="_blank">Twitter/X</a>
+                    <a href="https://www.yelp.co.uk/london" target="_blank">Yelp</a>
                 </div>
             </div>
             <div class="footer-section">
-                <div class="quicklinks">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="{% url 'menu' %}">Menu</a></li>
-                        <li><a href="{% url 'reservations' %}">Reservations</a></li>
-                        <li><a href="{% url 'about' %}">About Us</a></li>
-                        <li><a href="{% url 'contact' %}">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-section newsletter" >
                 <h3>Newsletter</h3>
-                <form action="{% url 'newsletter_signup' %}" method="POST" class="newsletter-form">
-                    {% csrf_token %}
-                    <input type="email" name="email" placeholder="Enter your email">
+                <form class="newsletter-form" action="/api/newsletter" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required>
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
@@ -417,18 +212,8 @@
     <div class="footer-bottom">
         <p>&copy; 2024 Elegant Dining. All rights reserved.</p>
     </div>
-    <div class="testingfield">
 
-    </div>
     <!-- Scripts -->
-     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-XXXXX-Y');
-    </script>
     <script src="static/js/main.js"></script>
     <script src="static/js/animations.js"></script>
 </body>
