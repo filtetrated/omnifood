@@ -36,17 +36,17 @@
         </button>
         <div class="navigation">
             <ul class="nav-links">
-                <li><a href="../" data-url="home">Home</a></li>
-                <li><a href="../menu" data-url="menu">Menu</a></li>
-                <li><a href="../reservations" data-url="reservations">Reservations</a></li>
-                <li><a href="../about" data-url="about">About</a></li>
-                <li><a href="../contact" data-url="contact">Contact</a></li>
+                <li><a href="#home" data-url="home">Home</a></li>
+                <li><a href="/menu.html" data-url="menu">Menu</a></li>
+                <li><a href="#reservations" data-url="reservations">Reservations</a></li>
+                <li><a href="#about" data-url="about">About</a></li>
+                <li><a href="#contact" data-url="contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero">
+    <header class="hero" id="home">
         <div class="hero-content">
             <h1>Welcome to Elegant Dining</h1>
             <p>Experience culinary excellence in every bite</p>
@@ -61,7 +61,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="about">
+    <section class="about" id="about">
         <div class="about-content">
             <h2>Our Story</h2>
             <p>Founded in 1995 by renowned chef Marcus Laurent, Elegant Dining has established itself as a beacon of culinary excellence in the heart of the city. Our philosophy combines traditional cooking techniques with modern innovation, creating an unforgettable dining experience that engages all the senses.</p>
@@ -84,7 +84,7 @@
 
     <!-- Menu Preview Section -->
     <section class="menu-preview">
-        <h2>Explore Our Menu</h2>
+        <h2 class="menu-explore">Explore Our Menu</h2>
         <div class="menu-categories" data-section="menu-preview"></div>
     </section>
 
@@ -95,7 +95,7 @@
     </section>
 
     <!-- Reservation Section - Modified form -->
-    <section class="reservation">
+    <section class="reservation" id="reservations">
         <h2>Make a Reservation</h2>
         <form class="reservation-form" action="/api/reservations" method="POST">
             <div class="form-group">
@@ -148,7 +148,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact">
+    <section class="contact" id="contact">
         <h2>Contact Us</h2>
         <div class="contact-info">
             <div class="info-item">

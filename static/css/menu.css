@@ -212,7 +212,13 @@
     font-style: italic;
     margin-top: 2rem;
 }
-
+.nav-links {
+    font-weight: 500;
+}
+.navigation.active .nav-links li:nth-child(6) { animation-delay: 0.7s; }
+.navigation.active .nav-links li:nth-child(7) { animation-delay: 0.8s; }
+.navigation.active .nav-links li:nth-child(8) { animation-delay: 0.9s; }
+.navigation.active .nav-links li:nth-child(9) { animation-delay: 1s; }
 /* Responsive Design */
 @media (max-width: 768px) {
     .menu-header-content h1 {
