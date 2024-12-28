@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: "An artful selection of artisanal cheeses from around the world, paired with seasonal fruits, honeycomb, and freshly baked crackers. A harmonious blend of creamy, tangy, and nutty flavors, perfect for sharing or indulging solo.",
                 price: "89",
                 image: {
-                    url: "static/images/cheesy.webp"
+                    url: "static/images/cheessy.webp"
                 }
             }
         ],

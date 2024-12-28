@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-gold: #C4A661;
+            --color-dark: #1A1A1A;
+            --color-cream: #F9F6F0;
+            --color-gray: #4A4A4A;
+            --font-primary: 'Gabarito', serif;
+            --font-secondary: 'Garamond', serif;
+        }
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-cream);
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--color-dark);
+            margin-bottom: 2rem;
+            font-family: var(--font-secondary);
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .star {
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: #ddd;
+            transition: color 0.2s;
+        }
+
+        .star.active {
+            color: var(--color-gold);
+        }
+
+        .feedback-form {
+            display: block;
+            width:100%;
+            margin-top: 2rem;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 150px;
+            /* padding: 1rem; */
+            border: 2px solid var(--color-dark);
+            margin-bottom: 1rem;
+            font-family: var(--font-primary);
+            resize: vertical;
+            padding: 0.5rem;
+            resize:none;
+        }
+        textarea:focus {
+            outline:none;
+            border-color: transparent;
+        }
+        button {
+            background-color: var(--color-gold);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            cursor: pointer;
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            opacity: 0.8;
+        }
+
+        button:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        .thank-you {
+            display: none;
+            color: var(--color-dark);
+            margin-top: 2rem;
+        }
+
+        .error-message {
+            color: #dc3545;
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .loading {
+            display: none;
+            color: var(--color-gray);
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Share Your Experience</h1>
+        <div class="stars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
+        
+        <div class="feedback-form">
+            <textarea placeholder="Please share your experience with us..." required></textarea>
+            <button class="submit-button" type="submit">Submit Feedback</button>
+        </div>
+        
+        <div class="loading">Sending your feedback...</div>
+        <div class="error-message">There was an error sending your feedback. Please try again.</div>
+        <div class="thank-you">Thank you for your feedback! We appreciate your time.</div>
+    </div>
+
+    <script>
+        // Configuration
+        const GOOGLE_REVIEW_URL = 'https://www.google.com/maps/place/University+Parks/@51.7617657,-1.2583691,17z/data=!4m18!1m9!3m8!1s0x4876c4021439b873:0x6ea8b06419511b5b!2sUniversity+Parks!8m2!3d51.7617625!4d-1.2534982!9m1!1b1!16zL20vMDNsNWYw!3m7!1s0x4876c4021439b873:0x6ea8b06419511b5b!8m2!3d51.7617625!4d-1.2534982!9m1!1b1!16zL20vMDNsNWYw!5m1!1e4?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D';
+        const FEEDBACK_HANDLER_URL = 'feedback-handler.php'; // Path to your PHP handler
+
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        const feedbackForm = document.querySelector('.feedback-form');
+        let currentRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('mouseover', function() {
+                const rating = this.dataset.value;
+                highlightStars(rating);
+            });
+
+            star.addEventListener('mouseout', function() {
+                highlightStars(currentRating);
+            });
+
+            star.addEventListener('click', function() {
+                const rating = this.dataset.value;
+                currentRating = rating;
+                highlightStars(rating);
+                
+                if (rating > 4) {
+                    // Redirect to Google Review
+                    window.location.href = GOOGLE_REVIEW_URL;
+                } else {
+                    // Show feedback form
+                    feedbackForm.style.display = 'block';
+                }
+            });
+        });
+
+        function highlightStars(rating) {
+            stars.forEach(star => {
+                star.classList.toggle('active', star.dataset.value <= rating);
+            });
+        }
+
+
+        // Updated feedback submission handler
+        const submitButton = document.querySelector('.submit-button')
+        submitButton.addEventListener('click', async function() {
+            const feedback = document.querySelector('textarea').value;
+            if (!feedback.trim()) {
+                alert('Please enter your feedback before submitting.');
+                return;
+            }
+
+            const loadingMessage = document.querySelector('.loading');
+            const errorMessage = document.querySelector('.error-message');
+            
+            // Show loading message
+            loadingMessage.style.display = 'block';
+            errorMessage.style.display = 'none';
+            submitButton.disabled = true;
+
+            try {
+                const response = await fetch(FEEDBACK_HANDLER_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        rating: currentRating,
+                        feedback: feedback
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    // Show thank you message
+                    feedbackForm.style.display = 'none';
+                    loadingMessage.style.display = 'none';
+                    thankYouMessage.style.display = 'block';
+                } else {
+                    throw new Error('Feedback submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+                loadingMessage.style.display = 'none';
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
